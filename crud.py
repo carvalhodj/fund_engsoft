@@ -2,6 +2,7 @@ import os, os.path
 import cherrypy
 import operator
 
+from functools import reduce
 from sqlalchemy import *
 
 
@@ -45,18 +46,21 @@ class MakerStats():
 		global listaB
 		listaB = listaBairros
 		print(listaBairros)
-		l = []
+		listaConhecimentosPlataformas = []
 		for key in listaBairros:
-			x = listaBairros[key]
-			for i in x:
-				l.append(i)
-		result = map(sum, zip(*l))
+			parametros = listaBairros[key]
+			for dado in parametros:
+				listaConhecimentosPlataformas.append(dado)
+		result = map(sum, zip(*listaConhecimentosPlataformas))
 		print(list(result))
-		s = select([func.count(users.c.iD)])
-		#s = select([func.count("*")], from_obj=[users])
-		y = s.execute()
-		for row in y:
-			print(list(row))
+		selectDB = select([func.count(users.c.iD)])
+		runSelectDB = selectDB.execute()
+		quantidadeRegistros = []
+		for row in runSelectDB:
+			quantidadeRegistros = list(row)
+		#quantidadeRegistrosInt = reduce(operator.add, quantidadeRegistros)
+		#print(quantidadeRegistrosInt)
+		quantidadeRegistrosInt = int(''.join(map(str, quantidadeRegistros)))# Converte lista em um inteiro concatenado.
 		return open('index.html')
 
 	@cherrypy.expose
