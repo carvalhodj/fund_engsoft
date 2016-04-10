@@ -42,6 +42,14 @@ class MakerStats():
 		global listaB
 		listaB = listaBairros
 		print(listaBairros)
+		l = []
+		for key in listaBairros:
+			x = listaBairros[key]
+			for i in x:
+				l.append(i)
+		#print(l)
+		result = map(sum, zip(*l))
+		print(list(result))
 		return open('index.html')
 
 	@cherrypy.expose
