@@ -9,7 +9,10 @@ class MakerStats():
 	exposed = True
 	listaB = {}
 
-
+	def run(stmt):
+		rs = stmt.execute()
+		for row in rs:
+			print(row)
 	
 	@cherrypy.expose
 	def index(self):
@@ -47,9 +50,13 @@ class MakerStats():
 			x = listaBairros[key]
 			for i in x:
 				l.append(i)
-		#print(l)
 		result = map(sum, zip(*l))
 		print(list(result))
+		s = select([func.count(users.c.iD)])
+		#s = select([func.count("*")], from_obj=[users])
+		y = s.execute()
+		for row in y:
+			print(list(row))
 		return open('index.html')
 
 	@cherrypy.expose
