@@ -9,7 +9,6 @@ from sqlalchemy import *
 
 class MakerStats():
 	exposed = True
-	#listaB = {}
 
 	@cherrypy.expose
 	def index(self):
@@ -45,9 +44,6 @@ class MakerStats():
 				listaBairros[row[1]].append(row[2:])
 			else:
 				listaBairros[row[1]] = [row[2:]]
-		#global listaB
-		#listaB = listaBairros
-		#print(listaBairros)
 		listaConhecimentosPlataformas = []
 		for key in listaBairros:
 			parametros = listaBairros[key]
@@ -82,7 +78,6 @@ class MakerStats():
 		users = Table('user', metadata, autoload=True)
 		i = users.select()
 		rs = i.execute()
-#		l = []
 		dictValores = {'1': 'Sim', '0': 'Não'} 
 		listaBairros = {}
 		pagina = cab + cadastro + listar + atualizar + tableHead
@@ -94,52 +89,19 @@ class MakerStats():
 			platArd = str(row[4])
 			platRpi = str(row[5])
 			
-			pagina += tableStartTag + "<td>" + idRow + "</td><td>" +  bairro + "</td><td>" + dictValores[conhecEletr] + "</td><td>" + dictValores[conhecProg] + "</td><td>" + dictValores[platArd] + "</td><td>" + dictValores[platRpi] + "</td><td>"+ "<a href=pagDeletar?riD=" + idRow + ">Deletar</a>" + tableEndTag
-#			conhecEletr = str(key[1])
-#			conhecProg = str(key[2])
-#			platArd = str(key[3])n rs:
-			
-#			pagina += str(row) + "<br>"
-#			if (row[1] in listaBairros):
-#				listaBairros[row[1]].append(row[2:])
-#			else:
-#				listaBairros[row[1]] = [row[2:]]
-#		for key in listaBairros:
-#			bairro = str(key[0])
-#			conhecEletr = str(key[1])
-#			conhecProg = str(key[2])
-#			platArd = str(key[3])
-			
-#			pagina += str(key) + "Eletrônica: " + listaBairros[key][0]
-#			x = listaBairros[key]
-#			for i in x:
-#				l.append(i)
-#		print(l)
-		#result = map(sum, l)
-		#print(result)
-#		pagina = cab + cadastro + listar + remover + atualizar 
-#		for i in range(len(l)):
-#			pagina += "%s <br>" % (str(l[i]))
+			pagina += tableStartTag + "<td>" + bairro + "</td><td>" + dictValores[conhecEletr] + "</td><td>" + dictValores[conhecProg] + "</td><td>" + dictValores[platArd] + "</td><td>" + dictValores[platRpi] + "</td><td>"+ "<a href=pagDeletar?riD=" + idRow + ">Deletar</a>" + tableEndTag
 		pagina += rodape
 		return pagina
 	@cherrypy.expose
 	def pagDeletar(self, riD):
 		db = create_engine("mysql://root:root@127.0.0.1:3306/mydb")
 		db.echo = True
-#		metadata = MetaData(db)
 		connection = db.connect()
 		trans = connection.begin()
 		connection.execute("DELETE FROM user WHERE iD = %d" % (int(riD)))
 		trans.commit()
-#		users = Table('user', metadata, autoload=True)
-#		users.delete().where(users.c.iD==riD)
 		connection.close()
 		return self.pagListar()
-#		rs = i.execute()
-#		print(type(riD))
-#		print(riD)
-#		userSelect = rs.query.get(iD=int(riD))
-#		db.delete(userSelect)
 	
 if __name__ == '__main__':
 	cherrypy.config.update({'server.socket_host': '0.0.0.0',

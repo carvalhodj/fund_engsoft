@@ -1,6 +1,7 @@
 cab = """<html>
 <head></head>
-<body><h1>População Maker no Recife!</h1><br><br>"""
+<body><h1>População Maker no Recife!</h1><br><br>
+Sistema para levantamento das pessoas que conhecem eletrônica/programação, além das plataformas como Arduino e Raspberry Pi, na cidade do Recife<br><br>"""
 cadastro = 	"""<form method="post" action="pagCadastro">
 		Bairro: <!-- input type="text" list="bairros" name="bairro" />-->
 		<select name="bairro" >
@@ -113,16 +114,15 @@ cadastro = 	"""<form method="post" action="pagCadastro">
 	Plataformas:<br>
 		<input type="checkbox" name="plataforma1" value="1">Arduino<br>
 		<input type="checkbox" name="plataforma2" value="1">Raspberry Pi<br><br>
-		<button type="submit">Cadastrar</button>
+		<button type="submit">Cadastrar</button> Com os dados acima preenchidos, clicar ao lado para cadastrar no banco de dados
 	</form>"""
 atualizar  = 	"""<form method="get" action="pagAtualizar">
-	<button type="submit">Atualizar</button>
+	<button type="submit">Atualizar</button> Realizar o cálculo das médias
 	</form>"""
 listar = 	"""<form action="pagListar">
-	<button type="submit">Listar</button>
+	<button type="submit">Listar</button> Listar os dados cadastrados
 	</form>"""
 tableHead = """<table style="width:100%">
-<tr><td><h3>Id</h3></td>
 <td><h3>Bairro</h3></td>
 <td><h3>Eletrônica</h3></td>
 <td><h3>Programação</h3></td>
