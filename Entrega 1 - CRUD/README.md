@@ -1,6 +1,6 @@
 Link para o CRUD:
 
-http://54.233.174.163:8000/
+http://54.233.177.243:8000/
 
 Quadro SCRUM Trello:
 
