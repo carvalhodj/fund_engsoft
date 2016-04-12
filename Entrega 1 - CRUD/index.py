@@ -1,7 +1,7 @@
 cab = """<html>
 <head></head>
-<body><h1>População Maker no Recife!</h1><br><br>
-Sistema para levantamento das pessoas que conhecem eletrônica/programação, além das plataformas como Arduino e Raspberry Pi, na cidade do Recife<br><br>"""
+<body><h1>População Maker no Recife!</h1><br>
+Sistema para levantamento das pessoas que conhecem eletrônica/programação, além das plataformas como Arduino e Raspberry Pi, na cidade do Recife<br><br><br>"""
 cadastro = 	"""<form method="post" action="pagCadastro">
 		Bairro: <!-- input type="text" list="bairros" name="bairro" />-->
 		<select name="bairro" >
