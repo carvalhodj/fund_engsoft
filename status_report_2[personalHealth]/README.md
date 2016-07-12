@@ -15,3 +15,11 @@ http://bit.ly/phealthEnt1
 ######### Repositório do App #########
 
 https://github.com/carvalhodj/PersonalHealth
+
+
+######### Protótipo interativo do App #########
+
+http://bit.ly/personalHealthApp
+
+Obs.: Apenas funcionando o cadastro de usuário e login convencional
+
