@@ -2,6 +2,9 @@
 
 http://bit.ly/pHealthDemo
 
+.É necessário realizar o cadastro de um novo usuário para testá-lo.
+
+
 # #Código-fonte
 
 https://github.com/carvalhodj/PersonalHealth
